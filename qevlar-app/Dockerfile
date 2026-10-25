@@ -17,4 +17,6 @@ HEALTHCHECK --interval=30s --timeout=3s --start-period=5s --retries=3 \
   CMD node -e "require('http').get('http://localhost:8080/health', (r) => {if (r.statusCode !== 200) throw new Error(r.statusCode)})"
 
 EXPOSE 8080
+RUN chown -R 1000:1000 /app
+USER 1000
 CMD ["node", "server.js"]
