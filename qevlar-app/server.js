@@ -3,8 +3,10 @@ const https = require('https');
 const http = require('http');
 const { URL } = require('url');
 const path = require('path');
+const helmet = require('helmet');
 
 const app = express();
+app.use(helmet());
 app.use(express.json({ limit: '10mb' }));
 app.use(express.static(path.join(__dirname, 'public')));
 
